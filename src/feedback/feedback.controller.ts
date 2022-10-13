@@ -9,6 +9,6 @@ export class FeedbackController {
 
     @Post()
     createFeedback(@Body() createFeedbackDto:CreateFeedbackDto){
-        console.log('feed post');
+        this.feedbackService.createFeedback(createFeedbackDto);
     }
 }
