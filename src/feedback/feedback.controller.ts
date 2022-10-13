@@ -1,9 +1,14 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreateFeedbackDto } from './dto/createFeedback.dto';
+import { FeedbackService } from './feedback.service';
 
 @Controller('feedback')
 export class FeedbackController {
+
+    constructor(private readonly feedbackService:FeedbackService){}
+
     @Post()
-    createFeedback(){
+    createFeedback(@Body() createFeedbackDto:CreateFeedbackDto){
         console.log('feed post');
     }
 }
