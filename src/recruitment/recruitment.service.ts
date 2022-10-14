@@ -40,4 +40,10 @@ export class RecruitmentService {
 
         console.log(recruitment);
     }
+
+    getAllRecruitment(){
+        return this.recruitments;
+    }
+
+    
 }
