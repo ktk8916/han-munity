@@ -1,24 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFeedbackDto } from './dto/createFeedback.dto';
+import { CreateFeedbackDto } from './dto/create-feedback.dto';
 import { Feedback } from './entity/feedback.entity';
+import { FeedbackRepository } from './feedback.repository';
 
 @Injectable()
 export class FeedbackService {
-  private sequence = 0;
-  private feedbacks: Feedback[] = [];
+  constructor(private readonly feedbackRepository: FeedbackRepository) {}
 
   createFeedback(createFeedbackDto: CreateFeedbackDto) {
-    this.sequence++;
-    const createTime = '아무튼시간임';
-    const { feed } = createFeedbackDto;
-
-    const feedback: Feedback = {
-      feedbackId: this.sequence,
-      feed,
-      createTime,
-    };
-
-    this.feedbacks.push(feedback);
-    console.log(this.feedbacks);
+    this.feedbackRepository.createFeedback(createFeedbackDto);
   }
 }
