@@ -1,21 +1,21 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CreateRecruitmentDto } from './dto/createRecruitment.dto';
-import { Recruitment } from './entity/recruitment.entity';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
+import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
 import { RecruitmentService } from './recruitment.service';
 
 @Controller('recruitment')
 export class RecruitmentController {
+  constructor(private readonly recruitmentService: RecruitmentService) {}
 
-    constructor(private readonly recruitmentService:RecruitmentService){}
-
-    @Get()
-    getAllRecruitment(){
-        return this.recruitmentService.getAllRecruitment();
-    }
-
-    @Post()
-    createRecruitment(@Body() createRecruitmentDto:CreateRecruitmentDto){
-        this.recruitmentService.createRecruitment(createRecruitmentDto);
-    }
-    
+  @Post()
+  @UsePipes(ValidationPipe)
+  createRecruitment(@Body() createRecruitmentDto: CreateRecruitmentDto) {
+    this.recruitmentService.createRecruitment(createRecruitmentDto);
+  }
 }
