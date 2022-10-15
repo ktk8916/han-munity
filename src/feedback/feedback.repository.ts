@@ -14,11 +14,7 @@ export class FeedbackRepository extends Repository<Feedback> {
   }
 
   async createFeedback(createFeedbackDto: CreateFeedbackDto) {
-    const { feed } = createFeedbackDto;
-
-    const feedback = this.create({
-      feed,
-    });
+    const feedback = this.create(createFeedbackDto);
 
     await this.save(feedback);
   }
