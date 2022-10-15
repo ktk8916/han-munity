@@ -1,5 +1,5 @@
-export class Feedback{
-    feedbackId:number;
-    feedContent:string;
-    feedCreateTime:string;
+export class Feedback {
+  feedbackId: number;
+  feed: string;
+  createTime: string;
 }

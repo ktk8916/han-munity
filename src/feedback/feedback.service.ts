@@ -4,21 +4,21 @@ import { Feedback } from './entity/feedback.entity';
 
 @Injectable()
 export class FeedbackService {
-    private sequence = 0;
-    private feedbacks:Feedback[] = [];
+  private sequence = 0;
+  private feedbacks: Feedback[] = [];
 
-    createFeedback(createFeedbackDto:CreateFeedbackDto){
-        this.sequence++;
-        const feedCreateTime = '아무튼시간임';
-        const {feedContent} = createFeedbackDto;
+  createFeedback(createFeedbackDto: CreateFeedbackDto) {
+    this.sequence++;
+    const createTime = '아무튼시간임';
+    const { feed } = createFeedbackDto;
 
-        const feedback:Feedback = {
-            feedbackId: this.sequence,
-            feedContent,
-            feedCreateTime
-        }
+    const feedback: Feedback = {
+      feedbackId: this.sequence,
+      feed,
+      createTime,
+    };
 
-        this.feedbacks.push(feedback);
-    }
-
+    this.feedbacks.push(feedback);
+    console.log(this.feedbacks);
+  }
 }

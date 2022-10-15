@@ -1,3 +1,3 @@
 export class CreateFeedbackDto {
-    feedContent:string;
+  feed: string;
 }
