@@ -13,8 +13,16 @@ export class RecruitmentRepository extends Repository<Recruitment> {
     );
   }
 
-  async createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
+  getRecruitmentById(id:number):Promise<Recruitment>{
+    return  this.findOneBy({recruitmentId:id});
+  }
+
+  getAllRecruitment():Promise<Recruitment[]>{
+    return this.find();
+  }
+
+  createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
     const recruitment = this.create(createRecruitmentDto);
-    await this.save(recruitment);
+    this.save(recruitment);
   }
 }
