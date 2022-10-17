@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
 import { getRecruitmentDto } from './dto/get-recruitment.dto';
+import { UpdateRecruitmentDto } from './dto/update-recruitment.dto';
 import { Recruitment } from './entity/recruitment.entity';
 import { RecruitmentRepository } from './recruitment.repository';
 
@@ -25,5 +26,18 @@ export class RecruitmentService {
 
   createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
     this.recruitmentRepository.createRecruitment(createRecruitmentDto);
+  }
+
+  async updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
+    const recruitment = await this.getRecruitmentById(id);
+    
+    console.log(recruitment);
+    const {categoryId, title, content, openTalkLink} = updateRecruitmentDto;
+    recruitment.categoryId = categoryId;
+    recruitment.title = title;
+    recruitment.content = content;
+    recruitment.openTalkLink = openTalkLink;
+
+    await this.recruitmentRepository.save(recruitment);
   }
 }
