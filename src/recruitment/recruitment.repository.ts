@@ -15,7 +15,7 @@ export class RecruitmentRepository extends Repository<Recruitment> {
   }
 
   getRecruitmentById(id:number):Promise<Recruitment>{
-    return  this.findOneBy({recruitmentId:id});
+    return this.findOneBy({recruitmentId:id});
   }
 
   getAllRecruitment():Promise<Recruitment[]>{
@@ -29,5 +29,13 @@ export class RecruitmentRepository extends Repository<Recruitment> {
 
   updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
     this.update(id, updateRecruitmentDto);
+  }
+
+  deleteRecruitment(id:number){
+    this.update(id, {isDeleted:true});
+  }
+
+  endRecruitment(id:number){
+    this.update(id, {isEnded:true});
   }
 }

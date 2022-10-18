@@ -31,7 +31,15 @@ export class RecruitmentService {
   async updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
     await this.getRecruitmentById(id);
     this.recruitmentRepository.updateRecruitment(id, updateRecruitmentDto); 
-    
-    
+  }
+
+  async deleteRecruitment(id:number){
+    await this.getRecruitmentById(id);
+    this.recruitmentRepository.deleteRecruitment(id);
+  }
+
+  async endRecruitment(id:number){
+    await this.getRecruitmentById(id);
+    this.recruitmentRepository.endRecruitment(id);
   }
 }

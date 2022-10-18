@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -27,7 +28,16 @@ export class RecruitmentController {
   @UsePipes(ValidationPipe)
   updateRecruitment(@Param('id', ParseIntPipe) id:number, @Body() updateRecruitmentDto:UpdateRecruitmentDto){
     return this.recruitmentService.updateRecruitment(id, updateRecruitmentDto);
+  }
 
+  @Delete('/:id')
+  deleteRecruitment(@Param('id', ParseIntPipe)id:number){
+    this.recruitmentService.deleteRecruitment(id);
+  }
+
+  @Patch('/:id/end')
+  endRecruitment(@Param('id', ParseIntPipe)id:number){
+    this.recruitmentService.endRecruitment(id);
   }
 
   @Get()
