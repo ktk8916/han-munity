@@ -32,12 +32,12 @@ export class RecruitmentController {
 
   @Delete('/:id')
   deleteRecruitment(@Param('id', ParseIntPipe)id:number){
-    this.recruitmentService.deleteRecruitment(id);
+    return this.recruitmentService.deleteRecruitment(id);
   }
 
   @Patch('/:id/end')
   endRecruitment(@Param('id', ParseIntPipe)id:number){
-    this.recruitmentService.endRecruitment(id);
+    return this.recruitmentService.endRecruitment(id);
   }
 
   @Get()
