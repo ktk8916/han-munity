@@ -25,7 +25,8 @@ export class RecruitmentController {
 
   @Patch('/:id')
   updateRecruitment(@Param('id', ParseIntPipe) id:number, @Body() updateRecruitmentDto:UpdateRecruitmentDto){
-    this.recruitmentService.updateRecruitment(id, updateRecruitmentDto);
+    return this.recruitmentService.updateRecruitment(id, updateRecruitmentDto);
+
   }
 
   @Get()

@@ -15,13 +15,15 @@ export class RecruitmentService {
 
   async getRecruitmentById(id:number):Promise<Recruitment>{
 
+
+    
     const found = await this.recruitmentRepository.getRecruitmentById(id);
     
     if(!found){
       throw new NotFoundException(`Can't find recruitment id : ${id}`);
     }
-    
     return found;
+    
   }
 
   createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
@@ -29,15 +31,15 @@ export class RecruitmentService {
   }
 
   async updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
+
     const recruitment = await this.getRecruitmentById(id);
-    
-    console.log(recruitment);
     const {categoryId, title, content, openTalkLink} = updateRecruitmentDto;
     recruitment.categoryId = categoryId;
     recruitment.title = title;
     recruitment.content = content;
     recruitment.openTalkLink = openTalkLink;
 
-    await this.recruitmentRepository.save(recruitment);
+    this.recruitmentRepository.save(recruitment);
+    return recruitment;
   }
 }
