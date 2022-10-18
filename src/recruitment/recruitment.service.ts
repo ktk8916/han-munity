@@ -20,8 +20,12 @@ export class RecruitmentService {
     if(!found){
       throw new NotFoundException(`Can't find recruitment id : ${id}`);
     }
+
+    if(found.isDeleted === true){
+      throw new NotFoundException(`Deleted recruitment id : ${id}`);
+    }
+
     return found;
-    
   }
 
   createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
