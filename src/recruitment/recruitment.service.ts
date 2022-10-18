@@ -15,8 +15,6 @@ export class RecruitmentService {
 
   async getRecruitmentById(id:number):Promise<Recruitment>{
 
-
-    
     const found = await this.recruitmentRepository.getRecruitmentById(id);
     
     if(!found){
@@ -31,15 +29,9 @@ export class RecruitmentService {
   }
 
   async updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
-
-    const recruitment = await this.getRecruitmentById(id);
-    const {categoryId, title, content, openTalkLink} = updateRecruitmentDto;
-    recruitment.categoryId = categoryId;
-    recruitment.title = title;
-    recruitment.content = content;
-    recruitment.openTalkLink = openTalkLink;
-
-    this.recruitmentRepository.save(recruitment);
-    return recruitment;
+    await this.getRecruitmentById(id);
+    this.recruitmentRepository.updateRecruitment(id, updateRecruitmentDto); 
+    
+    
   }
 }

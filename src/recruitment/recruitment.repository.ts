@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Repository, DataSource } from 'typeorm';
 import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
+import { UpdateRecruitmentDto } from './dto/update-recruitment.dto';
 import { Recruitment } from './entity/recruitment.entity';
 
 @Injectable()
@@ -24,5 +25,9 @@ export class RecruitmentRepository extends Repository<Recruitment> {
   createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
     const recruitment = this.create(createRecruitmentDto);
     this.save(recruitment);
+  }
+
+  updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
+    this.update(id, updateRecruitmentDto);
   }
 }
