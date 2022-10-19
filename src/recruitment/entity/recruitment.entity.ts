@@ -3,14 +3,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Category } from './category.entity';
 
 @Entity({ name: 'recruitment' })
 export class Recruitment extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'recruitment_id' })
   recruitmentId: number;
-  @Column({ name: 'category_id' })
+  @ManyToOne(()=>Category, (category)=>category.categoryId)
   categoryId: number;
   @Column({ name: 'title' })
   title: string;
