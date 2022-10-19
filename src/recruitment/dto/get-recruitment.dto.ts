@@ -1,13 +1,16 @@
-export class getRecruitmentDto {
-  recruitment_Id: number;
-  category_id: number;
-  title: string;
-  content: string;
-  openTalkLink: string;
-  createdAt: Date;
-  views: number;
-  isEnded: boolean;
-  writerName: string;
-  writerPassword: string;
-  writerIp: string;
+export class GetRecruitmentDto {
+
+  constructor(
+    private readonly recruitmentId: number,
+    private readonly categoryId: number,
+    private readonly title: string,
+    private readonly content: string,
+    private readonly openTalkLink: string,
+    private readonly createdAt: Date,
+    private readonly views: number,
+    private readonly isEnded: boolean,
+    private readonly writerName: string,
+    private readonly writerPassword: string,
+    private readonly writerIp: string
+  ){}
 }
