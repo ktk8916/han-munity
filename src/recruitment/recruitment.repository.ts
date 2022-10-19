@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { Repository, DataSource } from 'typeorm';
 import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
 import { UpdateRecruitmentDto } from './dto/update-recruitment.dto';
@@ -22,9 +22,17 @@ export class RecruitmentRepository extends Repository<Recruitment> {
     return this.find();
   }
 
-  createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
+  async createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
     const recruitment = this.create(createRecruitmentDto);
-    this.save(recruitment);
+
+    try {
+      await this.save(recruitment);
+    } catch (error) {
+      if(error.code === '23503'){
+        throw new UnprocessableEntityException('UnprocessableEntityException')
+      }
+    }
+   
   }
 
   updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
