@@ -28,8 +28,8 @@ export class RecruitmentService {
     return found;
   }
 
-  createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
-    this.recruitmentRepository.createRecruitment(createRecruitmentDto);
+  async createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
+    await this.recruitmentRepository.createRecruitment(createRecruitmentDto);
   }
 
   async updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
