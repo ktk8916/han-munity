@@ -1,4 +1,4 @@
-export class GetRecruitmentDto {
+export class FindRecruitmentDto {
 
   constructor(
     private readonly recruitmentId: number,
