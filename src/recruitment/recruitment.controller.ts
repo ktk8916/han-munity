@@ -11,6 +11,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
+import { FindRecruitmentDto } from './dto/find-recruitment.dto';
 import { UpdateRecruitmentDto } from './dto/update-recruitment.dto';
 import { Recruitment } from './entity/recruitment.entity';
 import { RecruitmentService } from './recruitment.service';
@@ -20,8 +21,8 @@ export class RecruitmentController {
   constructor(private readonly recruitmentService: RecruitmentService) {}
 
   @Get('/:id')
-  getRecruitment(@Param('id', ParseIntPipe) id:number):Promise<Recruitment>{
-    return this.recruitmentService.getRecruitmentById(id);
+  findRecruitmentById(@Param('id', ParseIntPipe) id:number):Promise<FindRecruitmentDto>{
+    return this.recruitmentService.findRecruitmentById(id);
   }
 
   @Patch('/:id')
