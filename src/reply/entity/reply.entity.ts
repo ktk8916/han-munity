@@ -1,5 +1,5 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Recruitment } from "./recruitment.entity";
+import { Recruitment } from "../../recruitment/entity/recruitment.entity";
 
 @Entity({name:"reply"})
 export class reply extends BaseEntity{
