@@ -2,7 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGenerat
 import { Recruitment } from "../../recruitment/entity/recruitment.entity";
 
 @Entity({name:"reply"})
-export class reply extends BaseEntity{
+export class Reply extends BaseEntity{
   @PrimaryGeneratedColumn({name:"reply_id"})
   replyId:number;
 
