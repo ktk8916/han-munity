@@ -25,6 +25,7 @@ export class RecruitmentRepository extends Repository<Recruitment> {
   async createRecruitment(createRecruitmentDto: CreateRecruitmentDto) {
     const recruitment = this.create(createRecruitmentDto);
 
+    //외래키 제약조건(카테고리) 임시조치..
     try {
       await this.save(recruitment);
     } catch (error) {
@@ -32,7 +33,6 @@ export class RecruitmentRepository extends Repository<Recruitment> {
         throw new UnprocessableEntityException('UnprocessableEntityException')
       }
     }
-   
   }
 
   updateRecruitment(id:number, updateRecruitmentDto:UpdateRecruitmentDto){
